@@ -1,8 +1,9 @@
-FROM tiangolo/uwsgi-nginx:python3.7
+FROM rontype1/uwsgi-nginx:latest
 
-LABEL maintainer="Sebastian Ramirez <tiangolo@gmail.com>"
+LABEL maintainer="Ronald Mendoza <rontype1@gmail.com"
+# Based on work by "Sebastian Ramirez <tiangolo@gmail.com>"
 
-RUN pip install flask
+RUN pip3 install flask flask_restful flask_cors datetime requests
 
 # URL under which static (not modified by Python) files will be requested
 # They will be served by Nginx directly, without being handled by uWSGI
@@ -14,7 +15,7 @@ ENV STATIC_PATH /app/static
 # ENV STATIC_INDEX 1
 ENV STATIC_INDEX 0
 
-# Add demo app
+# Add helloworld app
 COPY ./app /app
 WORKDIR /app
 
